@@ -15,7 +15,8 @@ def oauth_login(request, service,
     else:
         token = None
     if hasattr(request, "session"):
-        request.session[redirect_to_session_key] = request.GET.get(redirect_field_name)
+        request.session[redirect_to_session_key] = request.REQUEST.get(
+                redirect_field_name)
     return HttpResponseRedirect(access.authorization_url(token))
 
 
